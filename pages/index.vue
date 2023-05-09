@@ -33,8 +33,16 @@
       </div>
     </nav>
 
-    <main>
-      <h1>Home</h1>
+    <main class="flex-grow">
+      <article>
+        <div class="article-image-section article-section"></div>
+        <div class="article-description-section article-section"></div>
+        <div class="article-title-section article-section"></div>
+        <div class="article-nav-section article-section"></div>
+      </article>
+      <article></article>
+      <article></article>
+      <article></article>
     </main>
   </div>
 </template>
@@ -76,6 +84,26 @@ div {
     #nav-social-section,
     #nav-contact-section {
       flex-grow: 1;
+    }
+  }
+
+  article {
+    @apply grid h-full;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 2fr 1fr;
+
+    .article-section {
+      height: 100%;
+    }
+
+    .article-description-section,
+    .article-nav-section {
+      border-left: 1px solid var(--border-color);
+    }
+
+    .article-title-section,
+    .article-nav-section {
+      border-top: 1px solid var(--border-color);
     }
   }
 }
