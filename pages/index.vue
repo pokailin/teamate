@@ -39,8 +39,12 @@ div {
 
   background-color: var(--background-color);
 
-  article[data-status='inactive'] {
-    transform: translateX(-100%);
+  article {
+    @apply transition-all duration-1000;
+
+    &[data-status='inactive'] {
+      transform: translateX(-100%);
+    }
   }
 }
 </style>
