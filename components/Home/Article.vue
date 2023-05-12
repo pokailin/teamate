@@ -11,12 +11,10 @@ const emit = defineEmits<{
 }>();
 
 const handleLeftClick = () => {
-  console.log('what ??');
   emit('leftClick');
 };
 
 const handleRightClick = () => {
-  console.log('right what??');
   emit('rightClick');
 };
 </script>
