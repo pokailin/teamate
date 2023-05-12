@@ -4,6 +4,21 @@ const props = defineProps<{
   description: string;
   subtitle: string;
 }>();
+
+const emit = defineEmits<{
+  (event: 'rightClick'): void;
+  (event: 'leftClick'): void;
+}>();
+
+const handleLeftClick = () => {
+  console.log('what ??');
+  emit('leftClick');
+};
+
+const handleRightClick = () => {
+  console.log('right what??');
+  emit('rightClick');
+};
 </script>
 
 <template>
@@ -34,10 +49,18 @@ const props = defineProps<{
       </div>
     </div>
     <div class="article-nav-section article-section w-full flex">
-      <button type="button" class="flex-1 border-r-2 hover:bg-emerald-100/30">
+      <button
+        type="button"
+        class="flex-1 border-r-2 hover:bg-emerald-100/30"
+        @click="handleLeftClick"
+      >
         <Icon name="ph:arrow-bend-double-up-left-thin" class="text-6xl" />
       </button>
-      <button type="button" class="flex-1 hover:bg-emerald-100/30">
+      <button
+        type="button"
+        class="flex-1 hover:bg-emerald-100/30"
+        @click="handleRightClick"
+      >
         <Icon name="ph:arrow-bend-double-up-right-thin" class="text-6xl" />
       </button>
     </div>
@@ -46,7 +69,7 @@ const props = defineProps<{
 
 <style scoped lang="scss">
 article {
-  @apply grid h-full;
+  @apply grid h-full absolute left-0 top-0;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 2fr 1fr;
 
