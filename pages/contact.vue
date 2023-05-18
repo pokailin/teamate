@@ -1,3 +1,31 @@
+<script setup lang="ts">
+import { z } from 'zod';
+
+const ContactInfoSchema = z.object({
+  name: z.string().min(1).max(50),
+  email: z.string().email().min(5),
+  message: z.string().min(1).max(250).optional(),
+});
+
+type ContactInfo = z.infer<typeof ContactInfoSchema>;
+
+const data = reactive<Partial<ContactInfo>>({
+  name: undefined,
+  email: undefined,
+  message: undefined,
+});
+
+const onSubmit = () => {
+  try {
+    const contactInfo = ContactInfoSchema.parse(data);
+
+    console.log(contactInfo);
+  } catch (e) {
+    console.log(e);
+  }
+};
+</script>
+
 <template>
   <section class="w-full h-full flex">
     <div class="img-container flex-1">
@@ -11,20 +39,35 @@
     <div class="contact-container flex-1">
       <h2 class="text-6xl dark:text-white uppercase">Contact Us</h2>
       <div class="form-container">
-        <form class="flex gap-4 flex-col w-fit">
+        <form class="flex gap-4 flex-col w-fit" @submit.prevent="onSubmit">
           <div class="input-container">
             <label for="name">Name</label>
-            <input type="text" placeholder="What's your name?" />
+            <input
+              type="text"
+              placeholder="What's your name?"
+              required
+              v-model="data.name"
+            />
           </div>
 
           <div class="input-container">
             <label for="email">Email Address</label>
-            <input type="email" placeholder="What's your email address?" />
+            <input
+              type="email"
+              placeholder="What's your email address?"
+              required
+              v-model="data.email"
+            />
           </div>
 
           <div class="input-container">
             <label for="message">Message</label>
-            <textarea type="text" placeholder="What's on your mind?"></textarea>
+            <textarea
+              type="text"
+              placeholder="What's on your mind?"
+              required
+              v-model="data.message"
+            ></textarea>
           </div>
 
           <button>Contact Us</button>
