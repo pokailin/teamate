@@ -20,7 +20,7 @@ const handleRightClick = () => {
 </script>
 
 <template>
-  <article>
+  <section>
     <div
       class="article-image-section article-section"
       :style="`background-image: url(${imgUrl})`"
@@ -37,7 +37,7 @@ const handleRightClick = () => {
         <p class="text-6xl uppercase">{{ subtitle }}</p>
         <button
           type="button"
-          class="hover:bg-green-500/10 transition-colors duration-300 rounded-full p-3"
+          class="hover:bg-primary/10 transition-colors duration-300 rounded-full p-3"
         >
           <Icon
             name="ph:plus-bold"
@@ -47,26 +47,18 @@ const handleRightClick = () => {
       </div>
     </div>
     <div class="article-nav-section article-section w-full flex">
-      <button
-        type="button"
-        class="flex-1 border-r-2 hover:bg-emerald-100/30"
-        @click="handleLeftClick"
-      >
+      <button type="button" @click="handleLeftClick">
         <Icon name="ph:arrow-bend-double-up-left-thin" class="text-6xl" />
       </button>
-      <button
-        type="button"
-        class="flex-1 hover:bg-emerald-100/30"
-        @click="handleRightClick"
-      >
+      <button type="button" @click="handleRightClick">
         <Icon name="ph:arrow-bend-double-up-right-thin" class="text-6xl" />
       </button>
     </div>
-  </article>
+  </section>
 </template>
 
 <style scoped lang="scss">
-article {
+section {
   @apply grid h-full absolute left-0 top-0;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 2fr 1fr;
@@ -76,14 +68,28 @@ article {
     width: 100%;
   }
 
+  .article-nav-section {
+    button {
+      @apply flex-1;
+
+      &:nth-child(1) {
+        @apply border-r border-onSurface/10;
+      }
+
+      &:hover {
+        @apply bg-primary/5;
+      }
+    }
+  }
+
   .article-description-section,
   .article-nav-section {
-    border-left: 1px solid var(--border-color);
+    @apply border-l border-onSurface/10;
   }
 
   .article-title-section,
   .article-nav-section {
-    border-top: 1px solid var(--border-color);
+    @apply border-t border-onSurface/10;
   }
 
   .article-image-section {

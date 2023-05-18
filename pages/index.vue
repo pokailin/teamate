@@ -46,13 +46,13 @@ const currentStatus = (index: number) => {
 </script>
 
 <template>
-  <div class="flex flex-col h-screen overflow-hidden">
+  <div class="flex flex-col h-screen overflow-hidden bg-surface">
     <Nav />
     <main class="flex-grow relative">
       <HomeArticle
         v-for="(article, index) of articles"
         :key="index"
-        class="transition-all duration-1000"
+        class="transition-all duration-500"
         :class="{
           '-translate-x-full transition-none':
             buttonClicked === 'left' && currentStatus(index) === 'after',
@@ -71,13 +71,3 @@ const currentStatus = (index: number) => {
     </main>
   </div>
 </template>
-
-<style scoped lang="scss">
-div {
-  // --background-color: rgb(6, 11, 25);
-  --background-color: rgb(235, 244, 236);
-  --border-color: rgba(25, 124, 47, 0.1);
-
-  background-color: var(--background-color);
-}
-</style>
