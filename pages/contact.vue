@@ -2,7 +2,7 @@
   <section class="w-full h-full flex">
     <div class="img-container flex-1">img</div>
     <div class="contact-container flex-1">
-      <h2 class="text-6xl uppercase">Contact Us</h2>
+      <h2 class="text-6xl dark:text-white uppercase">Contact Us</h2>
       <div class="form-container">
         <form class="flex gap-4 flex-col w-fit">
           <div class="input-container">
@@ -41,13 +41,13 @@ section {
   .contact-container {
     @apply flex flex-col gap-24;
     .form-container {
-      @apply border-t border-l flex-grow w-full border-onSurface/50 px-12 py-16;
+      @apply border-t border-l flex-grow w-full border-onSurface/50 dark:border-surface/50 px-12 py-16;
 
       .input-container {
         @apply flex flex-col gap-1;
 
         label {
-          @apply uppercase text-xs;
+          @apply uppercase text-xs dark:text-white;
         }
 
         input,

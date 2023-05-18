@@ -20,7 +20,7 @@ const handleRightClick = () => {
 </script>
 
 <template>
-  <section>
+  <section class="dark:text-white">
     <div
       class="article-image-section article-section"
       :style="`background-image: url(${imgUrl})`"
@@ -73,7 +73,7 @@ section {
       @apply flex-1;
 
       &:nth-child(1) {
-        @apply border-r border-onSurface/10;
+        @apply border-r border-onSurface/10 dark:border-surface/10;
       }
 
       &:hover {
@@ -84,12 +84,12 @@ section {
 
   .article-description-section,
   .article-nav-section {
-    @apply border-l border-onSurface/10;
+    @apply border-l border-onSurface/10 dark:border-surface/10;
   }
 
   .article-title-section,
   .article-nav-section {
-    @apply border-t border-onSurface/10;
+    @apply border-t border-onSurface/10 dark:border-surface/10;
   }
 
   .article-image-section {

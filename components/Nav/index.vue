@@ -50,10 +50,10 @@ const isDarkMode = useDarkMode();
 
 <style scoped lang="scss">
 nav {
-  @apply border-b border-onSurface/10;
+  @apply border-b border-onSurface/10 dark:border-surface/10;
 
   .nav-section {
-    @apply flex gap-8 items-center justify-center border-l border-onSurface/10;
+    @apply flex gap-8 items-center justify-center border-l border-onSurface/10 dark:border-surface/10;
     padding: 3rem 2rem;
 
     a {
