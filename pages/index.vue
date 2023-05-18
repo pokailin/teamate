@@ -54,12 +54,12 @@ const currentStatus = (index: number) => {
         :key="index"
         class="transition-all duration-1000"
         :class="{
-          'translate-x-full transition-none':
-            buttonClicked === 'left' && currentStatus(index) === 'after',
-          'translate-x-full': currentStatus(index) === 'after',
           '-translate-x-full transition-none':
+            buttonClicked === 'left' && currentStatus(index) === 'after',
+          '-translate-x-full': currentStatus(index) === 'after',
+          'translate-x-full transition-none':
             buttonClicked === 'right' && currentStatus(index) === 'before',
-          '-translate-x-full': currentStatus(index) === 'before',
+          'translate-x-full': currentStatus(index) === 'before',
           '-z-10 transition-none': currentStatus(index) === 'inactive',
         }"
         :description="article.description"
