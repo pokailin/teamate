@@ -1,5 +1,9 @@
+<script setup lang="ts">
+const isDarkMode = useDarkMode();
+</script>
+
 <template>
-  <nav class="flex items-center">
+  <nav class="flex items-center dark:text-white">
     <div id="nav-logo-section" class="nav-section">
       <NuxtLink to="/">
         <Icon name="ph:leaf-fill" class="text-primary text-3xl" />
@@ -11,6 +15,17 @@
       <NuxtLink to="/about">ABOUT</NuxtLink>
 
       <NuxtLink to="/shop">SHOP</NuxtLink>
+
+      <button
+        type="button"
+        @click="() => (isDarkMode = !isDarkMode)"
+        class="hover:bg-primary/10 rounded-full p-2 flex items-center justify-center"
+      >
+        <Icon name="ph:moon" v-if="!isDarkMode" />
+        <Icon name="ph:sun" v-else />
+      </button>
+
+      <NuxtLink to="/login">LOGIN</NuxtLink>
     </div>
 
     <div id="nav-social-section" class="nav-section">
@@ -42,7 +57,7 @@ nav {
     padding: 3rem 2rem;
 
     a {
-      color: black;
+      @apply text-black dark:text-white transition-colors duration-300;
     }
   }
 
