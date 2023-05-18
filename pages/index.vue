@@ -46,28 +46,25 @@ const currentStatus = (index: number) => {
 </script>
 
 <template>
-  <div class="flex flex-col h-screen overflow-hidden bg-surface">
-    <Nav />
-    <main class="flex-grow relative">
-      <HomeArticle
-        v-for="(article, index) of articles"
-        :key="index"
-        class="transition-all duration-500"
-        :class="{
-          '-translate-x-full transition-none':
-            buttonClicked === 'left' && currentStatus(index) === 'after',
-          '-translate-x-full': currentStatus(index) === 'after',
-          'translate-x-full transition-none':
-            buttonClicked === 'right' && currentStatus(index) === 'before',
-          'translate-x-full': currentStatus(index) === 'before',
-          '-z-10 transition-none': currentStatus(index) === 'inactive',
-        }"
-        :description="article.description"
-        :img-url="article.imgUrl"
-        :subtitle="article.subtitle"
-        @left-click="decrementIndex"
-        @right-click="incrementIndex"
-      />
-    </main>
-  </div>
+  <main class="flex-grow relative">
+    <HomeArticle
+      v-for="(article, index) of articles"
+      :key="index"
+      class="transition-all duration-500"
+      :class="{
+        '-translate-x-full transition-none':
+          buttonClicked === 'left' && currentStatus(index) === 'after',
+        '-translate-x-full': currentStatus(index) === 'after',
+        'translate-x-full transition-none':
+          buttonClicked === 'right' && currentStatus(index) === 'before',
+        'translate-x-full': currentStatus(index) === 'before',
+        '-z-10 transition-none': currentStatus(index) === 'inactive',
+      }"
+      :description="article.description"
+      :img-url="article.imgUrl"
+      :subtitle="article.subtitle"
+      @left-click="decrementIndex"
+      @right-click="incrementIndex"
+    />
+  </main>
 </template>
