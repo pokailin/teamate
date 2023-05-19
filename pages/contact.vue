@@ -15,11 +15,21 @@ const data = reactive<Partial<ContactInfo>>({
   message: undefined,
 });
 
-const onSubmit = () => {
+const onSubmit = async () => {
   try {
     const contactInfo = ContactInfoSchema.parse(data);
 
     console.log(contactInfo);
+
+    const response = await useFetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: contactInfo,
+    });
+
+    console.log(response);
   } catch (e) {
     console.log(e);
   }
