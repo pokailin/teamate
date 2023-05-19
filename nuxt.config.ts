@@ -8,4 +8,10 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  nitro: {
+    plugins: ['~/server/db/indext.ts'],
+  },
+  runtimeConfig: {
+    mongodbUri: process.env.MONGODB_URI,
+  },
 });
