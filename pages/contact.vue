@@ -15,13 +15,17 @@ const data = reactive<Partial<ContactInfo>>({
   message: undefined,
 });
 
+const submitPending = ref(false);
+const hasError = ref(false);
+
 const onSubmit = async () => {
   try {
     const contactInfo = ContactInfoSchema.parse(data);
 
     console.log(contactInfo);
 
-    const response = await useFetch('/api/contact', {
+    submitPending.value = true;
+    const { data: response, error } = await useFetch('/api/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,8 +33,15 @@ const onSubmit = async () => {
       body: contactInfo,
     });
 
+    // setTimeout(() => {
+    submitPending.value = false;
+    // }, 2000);
+
+    hasError.value = error.value != null;
+
     console.log(response);
   } catch (e) {
+    submitPending.value = false;
     console.log(e);
   }
 };
@@ -80,7 +91,13 @@ const onSubmit = async () => {
             ></textarea>
           </div>
 
-          <button>Contact Us</button>
+          <button :disabled="submitPending">
+            <span v-if="!submitPending">Contact Us</span>
+            <div v-else class="flex items-center gap-2 justify-center">
+              <span>Sending...</span>
+              <Icon name="ph:spinner-gap-thin" class="animate-spin" />
+            </div>
+          </button>
         </form>
 
         <div class="extra-info flex flex-col gap-4">
