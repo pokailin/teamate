@@ -13,5 +13,6 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     mongodbUri: process.env.MONGODB_URI,
+    jwtAccessSecret: process.env.JWT_ACCESS_TOKEN_SECRET,
   },
 });
