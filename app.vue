@@ -1,9 +1,11 @@
 <script setup lang="ts">
-// const isDarkMode = useDarkMode();
+import { useDarkMode } from "composables/darkMode";
+
+const isDarkMode = useDarkMode();
 </script>
 
 <template>
-  <div :class="{ dark: false }">
+  <div :class="{ dark: isDarkMode }">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
