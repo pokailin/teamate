@@ -12,6 +12,7 @@ export default defineNuxtConfig({
   },
   css: ["@/assets/css/main.scss"],
   devtools: { enabled: true },
+  modules: ["nuxt-icon"],
   typescript: {
     strict: true,
   },

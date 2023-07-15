@@ -13,6 +13,7 @@
     "@types/node": "^18.16.19",
     "autoprefixer": "^10.4.14",
     "nuxt": "^3.6.2",
+    "nuxt-icon": "^0.4.2",
     "postcss": "^8.4.26",
     "sass": "^1.62.6",
     "sass-loader": "^13.3.2",
