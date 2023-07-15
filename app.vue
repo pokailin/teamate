@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useDarkMode } from "composables/darkMode";
-
 const isDarkMode = useDarkMode();
 </script>
 
